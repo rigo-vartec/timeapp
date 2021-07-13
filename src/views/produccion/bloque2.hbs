@@ -1,0 +1,358 @@
+<link rel="stylesheet" href="/css/estilo-hxh.css">
+<div id="contenedor-principal">
+<div class="card-header text-center">
+    <input type="text" class="form-control 2" id="turno" value="{{turno}}">
+    <H1>Produccion hora-X-hora Turno:{{turno}}</H1>
+</div>
+{{#if alert}}
+<div class=" col-md-6 mx-auto">
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <strong>El registro de producción fue agregado con éxito</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+{{/if}}
+<div class="row">
+    {{#each registros}}
+    <div class="col-md-5 p-3" >
+        <div class="card">
+            <div class="child">
+                <div class="card-body text-center">
+                    <form action="/produccion/{{turno}}/{{bloque}}/{{id}}" method="POST">
+                    <div class="form-group">
+                        <h1>{{num_machine}}</h1>
+                        <div class="hora-mañana">
+                            <h2>06:00-07:00</h2>
+                        </div>
+                        <div class="hora-tarde">
+                            <h2>15:30-16:00</h2>
+                        </div>
+                        <div class="hora-noche">
+                            <h2>00:30-01:00</h2>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Total</label>
+                        <input type="number" class="form-control 1" name="hora_1"  value="{{hora_1}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block" >Registrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    <div class="col-md-5 p-3" >
+        <div class="card">
+            <div class="child">
+                <div class="card-body text-center">
+                    <form action="/produccion/{{turno}}/{{bloque}}/{{id}}" method="POST">
+                    <div class="form-group">
+                        <h1>{{num_machine}}</h1>
+                        <div class="hora-mañana">
+                            <h2>07:00-08:00</h2>
+                        </div>
+                        <div class="hora-tarde">
+                            <h2>16:00-17:00</h2>
+                        </div>
+                        <div class="hora-noche">
+                            <h2>01:00-02:00</h2>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Total Hora</label>
+                        <input type="number" class="form-control 2 text-center"  readonly>
+                    </div>
+                    <div class="form-group">
+                            <label for="hora">Total</label>
+                            <input type="number" class="form-control 1 text-center" name="hora_2"  value="{{hora_2}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block" >Registrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    <div class="col-md-5 p-3" >
+        <div class="card">
+            <div class="child">
+                <div class="card-body text-center">
+                    <form action="/produccion/{{turno}}/{{bloque}}/{{id}}" method="post">
+                    <div class="form-group">
+                        <h1>{{num_machine}}</h1>
+                        <div class="hora-mañana">
+                            <h2>08:00-09:00</h2>
+                        </div>
+                        <div class="hora-tarde">
+                            <h2>17:00-18:00</h2>
+                        </div>
+                        <div class="hora-noche">
+                            <h2>02:00-03:00</h2>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Total Hora</label>
+                        <input type="number" class="form-control 2 text-center"  readonly>
+                    </div>
+                    <div class="form-group">
+                            <label for="hora">Total</label>
+                            <input type="number" class="form-control 1 text-center" name="hora_3"  value="{{hora_3}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    <div class="col-md-5 p-3" >
+        <div class="card">
+            <div class="child">
+                <div class="card-body text-center">
+                    <form action="/produccion/{{turno}}/{{bloque}}/{{id}}" method="post">
+                    <div class="form-group">
+                        <h1>{{num_machine}}</h1>
+                        <div class="hora-mañana">
+                            <h2>09:00-10:00</h2>
+                        </div>
+                        <div class="hora-tarde">
+                            <h2>18:00-19:00</h2>
+                        </div>
+                        <div class="hora-noche">
+                            <h2>03:00-04:00</h2>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Total Hora</label>
+                        <input type="number" class="form-control 2 text-center" readonly>
+                    </div>
+                    <div class="form-group">
+                            <label for="hora">Total</label>
+                            <input type="number" class="form-control 1 text-center" name="hora_4"  value="{{hora_4}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    <div class="col-md-5 p-3" >
+        <div class="card">
+            <div class="child">
+                <div class="card-body text-center">
+                    <form action="/produccion/{{turno}}/{{bloque}}/{{id}}" method="post">
+                    <div class="form-group">
+                        <h1>{{num_machine}}</h1>
+                        <div class="hora-mañana">
+                            <h2>10:00-11:00</h2>
+                        </div>
+                        <div class="hora-tarde">
+                            <h2>19:00-20:00</h2>
+                        </div>
+                        <div class="hora-noche">
+                            <h2>04:00-05:00</h2>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Total Hora</label>
+                        <input type="number" class="form-control 2 text-center" readonly>
+                    </div>
+                    <div class="form-group">
+                            <label for="hora">Total</label>
+                            <input type="number" class="form-control 1 text-center" name="hora_5"  value="{{hora_5}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    <div class="col-md-5 p-3" >
+        <div class="card">
+            <div class="child">
+                <div class="card-body text-center">
+                    <form action="/produccion/{{turno}}/{{bloque}}/{{id}}" method="post">
+                    <div class="form-group">
+                        <h1>{{num_machine}}</h1>
+                        <div class="hora-mañana">
+                            <h2>11:00-12:00</h2>
+                        </div>
+                        <div class="hora-tarde">
+                            <h2>20:00-21:00</h2>
+                        </div>
+                        <div class="hora-noche">
+                            <h2>05:00-06:00</h2>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Total Hora</label>
+                        <input type="number" class="form-control 2 text-center" readonly>
+                    </div>
+                    <div class="form-group">
+                            <label for="hora">Total</label>
+                            <input type="number" class="form-control 1 text-center" name="hora_6"  value="{{hora_6}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    <div class="col-md-5 p-3" >
+        <div class="card">
+            <div class="child">
+                <div class="card-body text-center">
+                    <form action="/produccion/{{turno}}/{{bloque}}/{{id}}" method="post">
+                    <div class="form-group">
+                        <h1>{{num_machine}}</h1>
+                        <div class="hora-mañana">
+                            <h2>12:00-13:00</h2>
+                        </div>
+                        <div class="hora-tarde">
+                            <h2>21:00-22:00</h2>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Total Hora</label>
+                        <input type="number" class="form-control 2 text-center" readonly>
+                    </div>
+                    <div class="form-group">
+                            <label for="hora">Total</label>
+                            <input type="number" class="form-control 1 text-center" name="hora_7"  value="{{hora_7}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    <div class="col-md-5 p-3" >
+        <div class="card">
+            <div class="child">
+                <div class="card-body text-center">
+                    <form action="/produccion/{{turno}}/{{bloque}}/{{id}}" method="post">
+                    <div class="form-group">
+                        <h1>{{num_machine}}</h1>
+                        <div class="hora-mañana">
+                            <h2>13:00-14:00</h2>
+                        </div>
+                        <div class="hora-tarde">
+                            <h2>22:00-23:00</h2>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Total Hora</label>
+                        <input type="number" class="form-control 2 text-center"  readonly>
+                    </div>
+                    <div class="form-group">
+                            <label for="hora">Total</label>
+                            <input type="number" class="form-control 1 text-center" name="hora_8"  value="{{hora_8}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    <div class="col-md-5 p-3" >
+        <div class="card">
+            <div class="child">
+                <div class="card-body text-center">
+                    <form action="/produccion/{{turno}}/{{bloque}}/{{id}}" method="post">
+                    <div class="form-group">
+                        <h1>{{num_machine}}</h1>
+                        <div class="hora-mañana">
+                            <h2>14:00-15:00</h2>
+                        </div>
+                        <div class="hora-tarde">
+                            <h2>23:00-00:00</h2>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Total Hora</label>
+                        <input type="number" class="form-control 2 text-center" readonly>
+                    </div>
+                    <div class="form-group">
+                            <label for="hora">Total</label>
+                            <input type="number" class="form-control 1 text-center" name="hora_9"  value="{{hora_9}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    <div class="col-md-5 p-3" >
+        <div class="card">
+            <div class="child">
+                <div class="card-body text-center">
+                    <form action="/produccion/{{turno}}/final/{{bloque}}/{{id}}" method="post">
+                    <div class="form-group">
+                        <h1>{{num_machine}}</h1>
+                        <div class="hora-mañana">
+                            <h2>15:00-15:30</h2>
+                        </div>
+                        <div class="hora-tarde">
+                            <h2>00:00-00:30</h2>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Total Hora</label>
+                        <input type="number" class="form-control 2 text-center"  readonly>
+                    </div>
+                    <div class="form-group">
+                            <label for="hora">Total</label>
+                            <input type="number" class="form-control-1 text-center" name="step" value="0">
+                            <input type="number" class="form-control 1 text-center" name="hora_10" value="{{hora_10}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="child"></div>
+            <div class="child"></div>
+        </div>
+    </div>
+    {{/each}}
+    </div>
+</div>
+
+<script src="/js/bloques-1.js"></script>

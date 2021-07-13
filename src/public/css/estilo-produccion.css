@@ -1,0 +1,134 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+nav{
+  height: 10%;
+}
+.navbar{
+  padding-top: 0px;
+}
+
+.app-content-left {
+  float: left;
+  padding: 10px;
+  height: 100%;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+}
+
+.card.left-center{
+  height: 20%;
+  background-color: rgb(234 236 239);
+}
+.nav.nav-tabs{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card.sub-right{
+    height: 68%;
+}
+
+input.formtext{
+  display: none;
+}
+
+.page-container{
+  max-width: 95%;
+  margin: 15px auto;
+}
+.table-container{
+  max-height: 550px;
+  max-width: 100%;
+  overflow-y: scroll;
+}
+
+.table.table-bordered td,
+.table.table-bordered th{
+background-color: #ffffff;
+padding: 5px;
+min-width: 85px;
+}
+
+.table.table-bordered .sticky{
+  position: sticky;
+  top: 0;
+}
+
+.contenedor-modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.contenedor-modal button {
+  position: relative;
+  top: 40%;
+}
+
+.modal-dialog {
+  max-width: 95%;
+  margin: 25px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #ffffff;
+  padding: 5px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  font-size: 10px;
+  width: 50px;
+  text-align: center;
+}
+
+@media only screen and (max-height: 800px) {
+  
+.app-content-left {
+  width: 99%;
+}
+  .app-content-left {
+    height: 99%;
+  }
+
+  .full-height{
+    height: 85%;
+  }
+
+  .card.left-center {
+    height: 20%;
+  }
+
+  .nav.nav-tabs {
+    margin-top: 0%;
+  }
+
+  .card-body {
+    padding: 5%;
+  }
+
+  .card.sub-right {
+    height: 55%;
+  }
+
+  .btn-primary {
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+
+
+  p#fecha.form-control{
+    font-size: 15px;
+  }
+
+  .grid-item {
+    font-size: 16px;
+  }
+}

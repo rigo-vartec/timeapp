@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="/css/estilo-produccion.css">
+
+<body class="body-light-grey">
+    {{> navbar }}
+    <div class="full-height">
+        <div class="app-content-left">
+            <div class="card left-center text-center">
+                <H1>Facilitador de Corte</H1>
+                <div class="row">
+                    <div class="col">
+                        <p id="fecha" class="form-control"></p>
+                    </div>
+                    <div class="col">
+                        <p id="hora" class="form-control"></p>
+                    </div>
+                </div>
+            </div>
+            <nav>
+                <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link" id="nav-produccion-tab" data-toggle="tab" href="#registro-produccion"
+                    role="tab" aria-controls="nav-produccion" aria-selected="false">Registro de produccion</a>
+                    <a class="nav-item nav-link" id="nav-averias-tab" data-toggle="tab" href="#herramientas" role="tab"
+                    aria-controls="nav-averias" aria-selected="false">Herramientas</a>
+                </div>
+            </nav>
+            <div class="card sub-right tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="registro-produccion" role="tabpanel"
+                    aria-labelledby="nav-produccion-tab">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <form action="bloque1" method="POST" id="test">
+                                <div class="card-body">
+                                    <div class="grid-container">
+                                        <input class="formtext" type="text" name="turno">
+                                        <input class="formtext" type="text" name="step" value="1">
+                                        <div class="grid-item">A12</div>
+                                        <div class="grid-item">G01</div>
+                                        <div class="grid-item">A11</div>
+                                        <div class="grid-item">A10</div>
+                                        <div class="grid-item">G04</div>
+                                    </div>
+                                    <button class="btn btn-primary btn-block">Bloque 1</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <form action="bloque2" method="POST" id="test2">
+                                <div class="card-body">
+                                    <div class="grid-container">
+                                        <input class="formtext" type="text" name="turno">
+                                        <input class="formtext" type="text" name="step" value="1">
+                                        <div class="grid-item">G03</div>
+                                        <div class="grid-item">A03</div>
+                                        <div class="grid-item">G02</div>
+                                        <div class="grid-item">A09</div>
+                                        <div class="grid-item">A01</div>
+                                    </div>
+                                    <button class="btn btn-primary btn-block">Bloque 2</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <form action="bloque3" method="POST" id="test3">
+                                <div class="card-body">
+                                    <div class="grid-container">
+                                        <input class="formtext" type="text" name="turno">
+                                        <input class="formtext" type="text" name="step" value="1">
+                                        <div class="grid-item">A04</div>
+                                        <div class="grid-item">X06</div>
+                                        <div class="grid-item">A05</div>
+                                        <div class="grid-item">X07</div>
+                                    </div>
+                                    <button class="btn btn-primary btn-block">Bloque 3</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <form action="bloque4" method="POST" id="test4">
+                                <div class="card-body">
+                                    <div class="grid-container">
+                                        <input class="formtext" type="text" name="turno">
+                                        <input class="formtext" type="text" name="step" value="1">
+                                        <div class="grid-item">A06</div>
+                                        <div class="grid-item">A02</div>
+                                        <div class="grid-item">A07</div>
+                                        <div class="grid-item">A08</div>
+                                        <div class="grid-item">A13</div>
+                                    </div>
+                                    <button class="btn btn-primary btn-block">Bloque 4</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="/js/reloj.js"> </script>
+<script src="/js/page.js"> </script>

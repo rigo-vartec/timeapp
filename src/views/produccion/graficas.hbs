@@ -1,0 +1,293 @@
+<style>
+    #chartdiv {
+        width: 100%;
+        height: 700px;
+    }
+
+    #chartdiv1 {
+        width: 100%;
+        height: 500px;
+    }
+
+    #rect {
+        display: none;
+    }
+</style>
+
+
+<div id="chartdiv1"></div>
+<div id="chartdiv"></div>
+
+
+<script>
+    am4core.useTheme(am4themes_animated);
+
+    var data = {
+	{ {#each a01 } }
+    "{{num_machine}}" : { "2:00-300pm" : { { hora_1 } }, "3:00-4:00pm": { { hora_2 } }, "4:00-5:00pm": { { hora_3 } }, "5:00-6:00pm": { { hora_4 } }, "6:00-7:00pm": { { hora_5 } }, "7:00-8:00pm": { { hora_6 } }, "8:00-9:00pm": { { hora_6 } }, "9:00-10:00pm": { { hora_7 } } },
+    {
+        {
+            /each }}
+        }
+
+        function processData(data) {
+            var treeData = [];
+
+            var smallBrands = { name: "Total", children: [] };
+
+            for (var brand in data) {
+                var brandData = { name: brand, children: [] }
+                var brandTotal = 0;
+                for (var model in data[brand]) {
+                    brandTotal += data[brand][model];
+                }
+
+                for (var model in data[brand]) {
+                    // do not add very small
+                    if (data[brand][model] > 10) {
+                        brandData.children.push({ name: model, count: data[brand][model] });
+                    }
+                }
+
+                // add to small brands if total number less than
+                if (brandTotal > 100000) {
+                    treeData.push(brandData);
+                }
+                else {
+                    smallBrands.children.push(brandData)
+                }
+
+            }
+            treeData.push(smallBrands);
+            return treeData;
+        }
+
+        // create chart
+        var chart = am4core.create("chartdiv", am4charts.TreeMap);
+
+
+        // only one level visible initially
+        chart.maxLevels = 1;
+        // define data fields
+        chart.dataFields.value = "count";
+        chart.dataFields.name = "name";
+        chart.dataFields.children = "children";
+        chart.homeText = "Produccion 27-04-2017";
+
+        // enable navigation
+        chart.navigationBar = new am4charts.NavigationBar();
+
+        // level 0 series template
+        var level0SeriesTemplate = chart.seriesTemplates.create("0");
+        level0SeriesTemplate.strokeWidth = 2;
+
+        // by default only current level series bullets are visible, but as we need brand bullets to be visible all the time, we modify it's hidden state
+        level0SeriesTemplate.bulletsContainer.hiddenState.properties.opacity = 1;
+        level0SeriesTemplate.bulletsContainer.hiddenState.properties.visible = true;
+        // create hover state
+        var columnTemplate = level0SeriesTemplate.columns.template;
+        var hoverState = columnTemplate.states.create("hover");
+
+        // darken
+        hoverState.adapter.add("fill", function (fill, target) {
+            if (fill instanceof am4core.Color) {
+                return am4core.color(am4core.colors.brighten(fill.rgb, -0.2));
+            }
+            return fill;
+        })
+
+        // add logo
+        var image = columnTemplate.createChild(am4core.Image);
+        image.opacity = 0.15;
+        image.align = "center";
+        image.valign = "middle";
+        image.width = am4core.percent(80);
+        image.height = am4core.percent(80);
+
+        // add adapter for href to load correct image
+        image.adapter.add("href", function (href, target) {
+            var dataItem = target.parent.dataItem;
+            if (dataItem) {
+                return "/logos/" + dataItem.treeMapDataItem.name.toLowerCase() + ".png";
+            }
+        });
+
+        // level1 series template
+        var level1SeriesTemplate = chart.seriesTemplates.create("1");
+
+        var bullet1 = level1SeriesTemplate.bullets.push(new am4charts.LabelBullet());
+        bullet1.locationX = 0.5;
+        bullet1.locationY = 0.5;
+        bullet1.label.text = "{name}";
+        bullet1.label.fill = am4core.color("#ffffff");
+
+        // level2 series template
+        var level2SeriesTemplate = chart.seriesTemplates.create("2");
+        level2SeriesTemplate.columns.template.fillOpacity = 0;
+
+        var bullet2 = level2SeriesTemplate.bullets.push(new am4charts.LabelBullet());
+        bullet2.locationX = 0.5;
+        bullet2.locationY = 0.5;
+        bullet2.label.text = "{name}";
+        bullet2.label.fill = am4core.color("#ffffff");
+
+        chart.data = processData(data);
+
+
+
+</script>
+
+
+
+<script>
+        /**
+         * ---------------------------------------
+         * This demo was created using amCharts 4.
+         * 
+         * For more information visit:
+         * https://www.amcharts.com/
+         * 
+         * Documentation is available at:
+         * https://www.amcharts.com/docs/v4/
+         * ---------------------------------------
+         */
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+
+
+
+        var chart = am4core.create('chartdiv1', am4charts.XYChart)
+        chart.scrollbarX = new am4core.Scrollbar();
+        chart.colors.step = 2;
+
+        chart.legend = new am4charts.Legend()
+        chart.legend.position = 'top'
+        chart.legend.paddingBottom = 20
+        chart.legend.labels.template.maxWidth = 95
+
+        var xAxis = chart.xAxes.push(new am4charts.CategoryAxis())
+        xAxis.dataFields.category = 'category'
+        xAxis.renderer.cellStartLocation = 0.1
+        xAxis.renderer.cellEndLocation = 1.5
+        xAxis.renderer.grid.template.location = 0;
+
+        var yAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        yAxis.min = 0;
+
+        function createSeries(value, name) {
+            var series = chart.series.push(new am4charts.ColumnSeries())
+            series.dataFields.valueY = value
+            series.dataFields.categoryX = 'category'
+            series.name = name
+
+            series.events.on("hidden", arrangeColumns);
+            series.events.on("shown", arrangeColumns);
+
+            var bullet = series.bullets.push(new am4charts.LabelBullet())
+            bullet.interactionsEnabled = false
+            bullet.dy = 30;
+            bullet.label.text = name + "\n" + '{valueY} pzs'
+            bullet.label.fill = am4core.color('#ffffff')
+
+            return series;
+        }
+
+        chart.data = [
+            {
+                category: '23:00-01:00',
+                A01: 1500,
+                A02: 2000,
+                A03: 1800,
+                A04: 2500,
+                A05: 2000,
+                A06: 1200
+            }, {
+                category: '01:00-02:00',
+                A01: 1500,
+                A02: 2000,
+                A03: 1800,
+                A04: 2500,
+                A05: 2000,
+                A06: 1200
+            },
+            {
+                category: '02:00-03:00',
+                A01: 1500,
+                A02: 2000,
+                A03: 1800,
+                A04: 2500,
+                A05: 2000,
+                A06: 1200
+            }, {
+                category: '03:00-04:00',
+                A01: 1500,
+                A02: 2000,
+                A03: 1800,
+                A04: 2500,
+                A05: 2000,
+                A06: 1200
+            }
+        ]
+
+
+        createSeries('A01', 'A01');
+        createSeries('A02', 'A02');
+        createSeries('A03', 'A03');
+        createSeries('A04', 'A04');
+        createSeries('A05', 'A05');
+        createSeries('A06', 'A06');
+        createSeries('A07', 'A07');
+        createSeries('A08', 'A08');
+        createSeries('A09', 'A09');
+        createSeries('A10', 'A10');
+        createSeries('A11', 'A11');
+        createSeries('A12', 'A12');
+        createSeries('A13', 'A13');
+        createSeries('G01', 'G01');
+        createSeries('G02', 'G02');
+        createSeries('G03', 'G03');
+        createSeries('G04', 'G04');
+        createSeries('X06', 'X06');
+        createSeries('X07', 'X07');
+
+        function arrangeColumns() {
+
+            var series = chart.series.getIndex(0);
+
+            var w = 1 - xAxis.renderer.cellStartLocation - (1 - xAxis.renderer.cellEndLocation);
+            if (series.dataItems.length > 1) {
+                var x0 = xAxis.getX(series.dataItems.getIndex(0), "categoryX");
+                var x1 = xAxis.getX(series.dataItems.getIndex(1), "categoryX");
+                var delta = ((x1 - x0) / chart.series.length) * w;
+                if (am4core.isNumber(delta)) {
+                    var middle = chart.series.length / 2;
+
+                    var newIndex = 0;
+                    chart.series.each(function (series) {
+                        if (!series.isHidden && !series.isHiding) {
+                            series.dummyData = newIndex;
+                            newIndex++;
+                        }
+                        else {
+                            series.dummyData = chart.series.indexOf(series);
+                        }
+                    })
+                    var visibleCount = newIndex;
+                    var newMiddle = visibleCount / 2;
+
+                    chart.series.each(function (series) {
+                        var trueIndex = chart.series.indexOf(series);
+                        var newIndex = series.dummyData;
+
+                        var dx = (newIndex - trueIndex + middle - newMiddle) * delta
+
+                        series.animate({ property: "dx", to: dx }, series.interpolationDuration, series.interpolationEasing);
+                        series.bulletsContainer.animate({ property: "dx", to: dx }, series.interpolationDuration, series.interpolationEasing);
+                    })
+                }
+            }
+        }
+</script>

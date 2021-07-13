@@ -1,0 +1,211 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  nav{
+    height: 10%;
+  }
+  .navbar{
+    padding-top: 0px;
+  }
+  .full-height {
+    max-width: 1400px;
+    padding: 10px;
+    height: 90%;
+    background-color: #f1f1f1
+  }
+  .app-content-right {
+      float: left;
+    height: 100%;
+    background-color: cornflowerblue;
+    border: 1px solid;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+  }
+  .app-content-left {
+    float: left;
+    padding: 10px;
+    height: 100%;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+  }
+
+  .card.left-center{
+    height: 20%;
+    background-color: rgb(234 236 239);
+  }
+  .nav.nav-tabs{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .card.sub-right{
+      height: 68%;
+  }
+
+  input.formtext{
+    display: none;
+  }
+
+  .tab-pane{
+      height: 100%;
+  }
+  
+  .message.form-group{
+      height: 10%;
+  }
+
+  p{
+    margin-bottom: 0px;
+  }
+  
+  
+  
+  button:not(:disabled) {
+    outline: none;
+  }
+  
+  .btn-send{
+    width: 5%;
+    height: 100%;
+      border-radius: 5px;
+      color: #009EF7;
+      background: #fff;
+      border: 1px solid;
+  }
+  
+  #mensaje{
+    outline: none;
+    height: 100%;
+    width: 55%;
+    border: 1px solid #629afd;
+  }
+  
+  .chat.form-group{
+      overflow-y: scroll;
+      height: 80%;
+  }
+  
+  .message{
+      height: 100%;
+  }
+  
+  .time{
+    font-size: 10px;
+  }
+  
+  .message ul li {
+      position: relative;
+      width: 85%;
+      padding-top: 15px;
+      clear: both;
+  }
+  
+  ul{
+      padding: 0px;
+      list-style: none;
+      margin: 0px auto;
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 0px;
+  }
+  
+  ul li.msg-left {
+    padding-left: 20px;
+      float: left;
+  }
+  
+  ul li.msg-left img {
+      float: left;
+      width: 40px;
+  }
+  
+  ul li.msg-left .msg-desc {
+      margin-left: 40px;
+      font-size: 10px;
+      background: #629afd;
+      padding: 5px 10px;
+      border-radius: 5px 5px 5px 5px;
+      position: relative;
+  }
+  
+  .message ul li.msg-left small {
+    margin-left: 40px;
+    float: left;
+    color: #000000;
+  }
+  
+  ul li.msg-right {
+      float: right;
+  }
+  
+  ul li.msg-right img {
+      position: absolute;
+      width: 30px;
+      right: 35px;
+  }
+  
+  ul li.msg-right .msg-desc {
+      margin-right: 70px;
+      font-size: 12px;
+      background: #cce5ff;
+      color: #004085;
+      padding: 5px 10px;
+      border-radius: 5px 5px 5px 5px;
+      position: relative;
+  }
+  
+  .message ul li.msg-right small {
+    float: right;
+    color: #000000;
+    margin-right: 70px;
+  }
+
+  h1{
+    height: 40%;
+    }
+  img {
+    height: 50%;
+    width: 50%;
+    }
+
+  .contenedor-img{
+      padding-top: 10%;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #ffffff;
+    padding: 5px;
+  }
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    font-size: 10px;
+    width: 50px;
+    text-align: center;
+  }
+
+  @media (min-width: 601px){
+    .app-content-right {
+        width: 25%;
+    }
+
+    .app-content-left {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+  .app-content-right {
+    display: none;
+}
+
+.app-content-left {
+  width: 99%;
+}
+}
+

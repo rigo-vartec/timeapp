@@ -1,0 +1,209 @@
+<link rel="stylesheet" href="/css/estilo-produccion.css">
+
+<div class="page-container">
+  
+  <div class="table-container">
+    <div class="table-cebra">
+      <table class="table table-bordered border-primary" id="Tabladatos">
+        <thead>
+          <tr>
+            <th class="sticky" scope="col"><button>Maquina</button> </th>
+            <th class="sticky" scope="col">06:00-07:00</th>
+            <th class="sticky" scope="col">07:00-08:00</th>
+            <th class="sticky" scope="col">08:00-09:00</th>
+            <th class="sticky" scope="col">09:00-10:00</th>
+            <th class="sticky" scope="col">10:00-11:00</th>
+            <th class="sticky" scope="col">11:00-12:00</th>
+            <th class="sticky" scope="col">12:00-13:00</th>
+            <th class="sticky" scope="col">13:00-14:00</th>
+            <th class="sticky" scope="col">Total Maquina</th>
+            <th class="sticky" scope="col">Tiempo averias</th>
+            <th class="sticky" scope="col">Tiempo incidencias</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th scope="row">Total acumulado</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">x&#772</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
+        <tbody>
+         <!--#with-->
+          {{#each produccion}}
+          <tr>
+            <th scope="row">{{num_machine}}</th>
+            <td>{{hora_1}}</td>
+            <td>{{hora_2}}</td>
+            <td>{{hora_3}}</td>
+            <td>{{hora_4}}</td>
+            <td>{{hora_5}}</td>
+            <td>{{hora_6}}</td>
+            <td>{{hora_7}}</td>
+            <td>{{hora_8}}</td>
+            <td></td>
+            <td><a href="" data-toggle="modal" data-target="#miModal" >{{tiempoave}}</a></td>
+            <td><a href="" data-toggle="modal" data-target="#miModal" >{{tiempoave}}</a></td>
+            {{/each }}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-container">
+          <div class="table-cebra">
+            <table class="table table-bordered border-primary" id="tablaaverias">
+        <thead>
+          <tr>
+            <th class="sticky" scope="col">N° Averia</th>
+            <th class="sticky" scope="col">Fecha</th>
+            <th class="sticky" scope="col">Turno</th>
+            <th class="sticky" scope="col">Maquina</th>
+            <th class="sticky" scope="col">Operador</th>
+            <th class="sticky" scope="col">Operador mantto</th>
+            <th class="sticky" scope="col">Hora inicio</th>
+            <th class="sticky" scope="col">Hora fin</th>
+            <th class="sticky" scope="col">motivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each averias}}
+          <tr>
+            <th scope="row">{{id}}</th>
+            <td>{{creation_date}}</td>
+            <td>{{turno}}</td>
+            <td>{{num_machine}}</td>
+            <td>{{num_ope}}</td>
+            <td>{{op_mantto}}</td>
+            <td>{{opening_time}}</td>
+            <td>{{end_time}}</td>
+            <td>{{type_break}}</td>
+            {{/each}}
+          </tr>
+        </tbody>
+      </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // generamos el evento para el boton
+  document.getElementsByTagName("button")[0].addEventListener("click", Maquina);
+
+  function Maquina() {
+    
+
+    /** sumamos las filas **/
+
+    // obtenemos todas las filas del tbody
+    const filas = document.querySelectorAll("#Tabladatos tbody tr");
+
+    // bucle por cada una de las filas
+    filas.forEach((fila) => {
+
+      // obtenemos los tds de cada fila
+      const tds = fila.querySelectorAll("td");
+
+      let total = 0;
+
+      // bucle por cada uno de los tds con excepcion el primero (producto) y ultimo (total)
+      for (let i = 0; i < tds.length - 3; i++) {
+
+        // sumamos los tds
+        total += parseInt(tds[i].innerHTML);
+      }
+
+      // mostramos el total en la ultima casilla
+      tds[tds.length - 3].innerHTML = total;
+    });
+
+
+    /** sumamos las columnas **/
+
+    // obtenemos el numero de columnas
+    const columnas = document.querySelectorAll("#Tabladatos thead tr th");
+
+    // obtenemos las fila de los totales
+    const totalFila = document.querySelectorAll("#Tabladatos tfoot tr td");
+
+    // bucle por cada una de las columnas excepto la primera
+    for (let i = 0; i < columnas.length - 3; i++) {
+      let total = 0;
+      let totalpromedio = 0;
+
+      // obtenemos el valor de cada una de las filas
+      filas.forEach((fila) => {
+        total += parseInt(fila.querySelectorAll("td")[i].innerHTML);
+      });
+      filas.forEach((fila) => {
+        totalpromedio += parseInt(fila.querySelectorAll("td")[i].innerHTML) / 19;
+      });
+      // mostramos el total en la ultima fila
+      totalFila[i].innerHTML = total;
+      totalFila[i + 10].innerHTML = totalpromedio.toFixed(0);
+    }
+
+    for (let j = 9; j < columnas.length - 2; j++) {
+      let Horas = 0;
+      let Minutos = 0;
+      let Segundos = 0;
+      let totalhoras = 0;
+      let totalminutos = 0;
+      let totalsegundos = 0;
+
+      filas.forEach((fila) => {
+        totalhoras = fila.querySelectorAll("td")[j].innerHTML;
+        Horas += parseInt(totalhoras.substr(0,2));
+        Minutos += parseInt(totalhoras.substr(3,2));
+        Segundos += parseInt(totalhoras.substr(6,5));
+
+        transcurridoHoras = Horas + 0;
+        transcurridoMinutos = Minutos + 0;
+        transcurridoSegundos = Segundos + 0;
+        transcurridoDias = 0;
+        
+        
+      });
+
+        //totalFila[j].innerHTML = totalhoras+":"+totalminutos+":"+totalsegundos;
+      
+    }
+    
+
+
+  }
+</script>

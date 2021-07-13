@@ -1,0 +1,76 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.full-height {
+    max-width: 1400px;
+    padding: 3%;
+    height: 90%;
+    background-color: #f1f1f1;
+}
+
+.app-content{
+    background-color: white;
+    width: 100%;
+    height: 90%;
+    padding: 10px;
+}
+.content{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-left-style: dotted;
+    border-left-width: 20px;
+    border-right-style: dotted;
+    border-right-width: 20px;
+    padding:5%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+    padding-top: 0px;
+  }
+
+.form-control-plaintext{
+    width: 100px;
+}
+
+.top-item.row{
+    width: 180px;
+}
+
+.row {
+    width: 170px;
+}
+
+#vbcalidad{
+    border-bottom: solid 1px;
+    padding: 0px;
+}
+
+
+
+.main-container{
+    width: 100%;
+}
+
+.sub-container{
+    margin-top: 2%;
+    width: 30%;
+}
+
+.form-group.button{
+    border-color: #ffffff;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 1200px){
+    .sub-container{
+        width: 50%;
+    }
+}

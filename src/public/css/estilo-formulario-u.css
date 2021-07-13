@@ -1,0 +1,73 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  nav{
+    height: 10%;
+  }
+  img{
+      width: 50%;
+  }
+  h1{
+    height: 40%;
+    }
+  .navbar{
+    padding-top: 0px;
+  }
+  .full-height {
+    max-width: 1400px;
+    padding: 10px;
+    height: 90%;
+    background-color: #f1f1f1
+  }
+  .app-content-right {
+    float: left;
+    height: 100%;
+    background: -webkit-linear-gradient(to right, #6eadd4, #636fa4);
+    background: linear-gradient(to right, #6eadd4, #636fa4);
+    border: 1px solid #cce5ff;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+  }
+  .app-content-left {
+    float: left;
+    padding: 10px;
+    height: 100%;
+    background-color: #ffffff;
+    border: 1px solid #cce5ff;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+  }
+  .contenedor-img{
+      margin-top: 30%;
+  }
+
+  .card.left-center{
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: rgb(234 236 239);
+  }
+  .card.left-sub{
+    margin-top: 5%;
+    padding: 5%;
+    background-color: rgb(234 236 239);
+  }
+  .form-group.left{
+    margin-bottom: 0px;
+  }
+
+  .card.text-white.mb-3{
+    background: linear-gradient(to right, #6eadd4, #636fa4);
+  }
+
+
+
+  @media (min-width: 601px){
+    .app-content-right {
+        width: 25%;
+    }
+
+    .app-content-left {
+        width: 75%;
+    }
+}
